@@ -19,11 +19,13 @@ The `app.py` lets you **interactively interrogate** all five models in real-time
 - Adjust attack intensity
 - Compare how each model’s predictions and confidence *flip* under stress
 
-> 🎥 (
+> 🎥
 
-https://github.com/user-attachments/assets/be969973-1f42-4775-91a1-8e6c47aee9b5
 
-)
+
+https://github.com/user-attachments/assets/bbd26ecd-8fc5-411e-b684-842eb2f2cdf5
+
+
 
 ---
 
@@ -85,8 +87,8 @@ Merged redundant top classes:
 ### Filtering
 Kept top 4 distinct product categories → final **29,359 complaints** (imbalanced).
 
-(<img width="1034" height="450" alt="newplot" src="https://github.com/user-attachments/assets/e9b62602-142c-4f4a-bfcc-3886d0cf5f17" />
-)
+<img width="1034" height="450" alt="newplot" src="https://github.com/user-attachments/assets/61af8f97-df09-4484-ad56-cb04ce665a25" />
+
 
 ---
 
@@ -106,8 +108,8 @@ Kept top 4 distinct product categories → final **29,359 complaints** (imbalanc
 
 ###  Clone the Repository
 ```bash
-git clone [your-repo-link]
-cd [your-repo-name]
+git clone https://github.com/AmeenKhan12345/The-Model-Interrogator.git
+cd The-Model-Interrogator
 ```
 ##  Install Dependencies
 
@@ -120,7 +122,7 @@ pip install -r requirements.txt
 ##  Run the Interactive App
 
 ```bash
-streamlit run app.py
+streamlit run app1.py
 ```
 > (Pre-trained models, tokenizers, and encoders are included and auto-loaded.)
 
