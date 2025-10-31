@@ -77,11 +77,11 @@ def load_model_1():
 def load_model_2():
     return joblib.load('model_2_lr.pkl')
 
-'''@st.cache_resource
-def load_model_3():
-    w2v_model = gensim.models.Word2Vec.load('model_3_w2v.model')
-    lr_model = joblib.load('model_3_lr.pkl')
-    return w2v_model, lr_model'''
+#@st.cache_resource
+#def load_model_3():
+ #   w2v_model = gensim.models.Word2Vec.load('model_3_w2v.model')
+  #  lr_model = joblib.load('model_3_lr.pkl')
+   # return w2v_model, lr_model
 
 def vectorize_complaints(text, model):
     tokens = clean_text(text).split()
@@ -92,21 +92,21 @@ def vectorize_complaints(text, model):
     else:
         return np.zeros((1, model.vector_size))
 
-'''@st.cache_resource
-def load_model_4():
-    model = tf.keras.models.load_model('model_4_lstm.h5')
-    tokenizer = joblib.load('model_4_keras_tokenizer.pkl')
-    encoder = joblib.load('model_4_label_encoder.pkl')
-    return model, tokenizer, encoder'''
+#@st.cache_resource
+#def load_model_4():
+ #   model = tf.keras.models.load_model('model_4_lstm.h5')
+  #  tokenizer = joblib.load('model_4_keras_tokenizer.pkl')
+   # encoder = joblib.load('model_4_label_encoder.pkl')
+    #return model, tokenizer, encoder
 
-'''@st.cache_resource
-def load_model_5():
-    model_dir = 'model_5_distilbert_final'
-    tokenizer = AutoTokenizer.from_pretrained(model_dir)
-    model = AutoModelForSequenceClassification.from_pretrained(model_dir)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model.to(device)
-    return model, tokenizer, device'''
+#@st.cache_resource
+#def load_model_5():
+    #model_dir = 'model_5_distilbert_final'
+    #tokenizer = AutoTokenizer.from_pretrained(model_dir)
+    #model = AutoModelForSequenceClassification.from_pretrained(model_dir)
+    #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    #model.to(device)
+    #return model, tokenizer, device
 
 # Load all models
 model_1 = load_model_1()
@@ -131,28 +131,28 @@ def get_model_2_prediction(text):
     top_class_index = np.argmax(probabilities)
     return model_2.classes_[top_class_index], float(probabilities[top_class_index]), probabilities
 
-'''def get_model_3_prediction(text):
-    vectorized_text = vectorize_complaints(text, w2v_model)
-    probabilities = model_3_lr.predict_proba(vectorized_text)[0]
-    top_class_index = np.argmax(probabilities)
-    return model_3_lr.classes_[top_class_index], float(probabilities[top_class_index]), probabilities'''
+#def get_model_3_prediction(text):
+ #   vectorized_text = vectorize_complaints(text, w2v_model)
+  #  probabilities = model_3_lr.predict_proba(vectorized_text)[0]
+   # top_class_index = np.argmax(probabilities)
+    #return model_3_lr.classes_[top_class_index], float(probabilities[top_class_index]), probabilities'''
 
-'''def get_model_4_prediction(text):
-    cleaned = clean_text(text)
-    seq = model_4_tokenizer.texts_to_sequences([cleaned])
-    padded_seq = pad_sequences(seq, maxlen=150)
-    probabilities = model_4_lstm.predict_on_batch(padded_seq)[0]
-    top_class_index = np.argmax(probabilities)
-    return model_4_encoder.classes_[top_class_index], float(probabilities[top_class_index]), probabilities'''
+#def get_model_4_prediction(text):
+ #   cleaned = clean_text(text)
+  #  seq = model_4_tokenizer.texts_to_sequences([cleaned])
+   # padded_seq = pad_sequences(seq, maxlen=150)
+    #probabilities = model_4_lstm.predict_on_batch(padded_seq)[0]
+    #top_class_index = np.argmax(probabilities)
+    #return model_4_encoder.classes_[top_class_index], float(probabilities[top_class_index]), probabilities'''
 
-'''def get_model_5_prediction(text):
-    inputs = model_5_tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(bert_device)
-    with torch.no_grad():
-        logits = model_5_bert(**inputs).logits
-    
-    probabilities = torch.nn.functional.softmax(logits, dim=1)[0].cpu().numpy()
-    top_class_index = np.argmax(probabilities)
-    return model_5_bert.config.id2label[top_class_index], float(probabilities[top_class_index]), probabilities'''
+#def get_model_5_prediction(text):
+ #   inputs = model_5_tokenizer(text, return_tensors="pt", truncation=True, padding=True).to(bert_device)
+  #  with torch.no_grad():
+   #     logits = model_5_bert(**inputs).logits
+    #
+    #probabilities = torch.nn.functional.softmax(logits, dim=1)[0].cpu().numpy()
+    #top_class_index = np.argmax(probabilities)
+    #return model_5_bert.config.id2label[top_class_index], float(probabilities[top_class_index]), probabilities'''
 
 # ----------------------------------------------------------------------
 # 4. LIME HELPER FUNCTIONS (FOR MODEL 2)
@@ -199,10 +199,11 @@ def calculate_attack_metrics(original_preds, attacked_preds, original_text, atta
     Calculate comprehensive attack metrics
     Returns: dict with flip_rate, avg_confidence_drop, semantic_similarity, etc.
     """
-    flips = sum([1 for i in range(5) if original_preds[i][0] != attacked_preds[i][0]])
-    flip_rate = flips / 5
+    num_models = len(original_preds)
+    flips = sum([1 for i in range(num_models) if original_preds[i][0] != attacked_preds[i][0]])
+    flip_rate = flips / num_models
     
-    confidence_drops = [original_preds[i][1] - attacked_preds[i][1] for i in range(5)]
+    confidence_drops = [original_preds[i][1] - attacked_preds[i][1] for i in range(num_models)]
     avg_confidence_drop = np.mean(confidence_drops)
     
     semantic_sim = calculate_semantic_similarity(original_text, attacked_text)
@@ -228,7 +229,7 @@ def calculate_attack_metrics(original_preds, attacked_preds, original_text, atta
 def calculate_robustness_score(original_pred, attacked_pred, semantic_sim):
     """
     Calculate robustness score for a single model
-    Score = (1 - flip) × confidence_retention × semantic_preservation
+    Score = (1 - flip) x confidence_retention x semantic_preservation
     """
     flip = 0 if original_pred[0] == attacked_pred[0] else 1
     # Add a small epsilon to prevent division by zero
