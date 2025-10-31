@@ -320,7 +320,8 @@ def create_robustness_leaderboard(robustness_scores, model_names):
     }).sort_values('Robustness Score', ascending=False)
     
     df['Rank'] = range(1, len(df) + 1)
-    df['Medal'] = ['🥇', '🥈', '🥉']
+    medals = ['🥇', '🥈', '🥉']
+    df['Medal'] = medals[:len(df)]
     
     fig = go.Figure(data=[go.Bar(
         x=df['Robustness Score'], y=df['Model'], orientation='h',
