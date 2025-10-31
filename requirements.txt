@@ -9,5 +9,4 @@ lime
 matplotlib
 plotly
 seaborn
-difflib
 sentence-transformers
