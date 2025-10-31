@@ -1,0 +1,23 @@
+Python cache
+
+pycache/
+*.pyc
+
+Environment
+
+.venv/
+venv/
+env/
+
+IDE files
+
+.vscode/
+.idea/
+
+NLTK data
+
+nltk_data/
+
+Checkpoints
+
+model_5_distilbert_checkpoints/
