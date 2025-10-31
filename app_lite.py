@@ -582,7 +582,7 @@ with tab1:
         metrics = calculate_attack_metrics(original_preds, attacked_preds, user_input, attacked_text)
         
         robustness_scores = []
-        for i in range(5):
+        for i in range(2):
             score = calculate_robustness_score(original_preds[i], attacked_preds[i], metrics['semantic_similarity'])
             robustness_scores.append(score)
         
