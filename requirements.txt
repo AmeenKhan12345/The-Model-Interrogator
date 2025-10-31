@@ -1,0 +1,13 @@
+streamlit
+pandas
+numpy
+joblib
+scikit-learn
+nltk
+textattack
+lime
+matplotlib
+plotly
+seaborn
+difflib
+sentence-transformers
