@@ -8,7 +8,7 @@ import nltk
 #import torch
 #import tensorflow as tf
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+#from tensorflow.keras.preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
 from textattack.augmentation import Augmenter
 from textattack.transformations.word_swaps import WordSwapEmbedding, WordSwapWordNet
