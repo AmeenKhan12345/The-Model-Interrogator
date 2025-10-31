@@ -1,4 +1,7 @@
 # 🔬 The Model Interrogator: A Comparative Study of NLP Robustness
+## 🚀 [Click Here for the LIVE "Lite" Demo!](https://the-model-interrogator.streamlit.app)
+    
+**Note:** The live demo runs a "Lite" version (Models 1 & 2) due to Streamlit Cloud's 1GB memory limit. This full GitHub repository contains all the code, analysis, and saved model files for the complete 5-model gauntlet.
 
 ## Overview
 
