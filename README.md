@@ -75,7 +75,7 @@ A "committee" system combining predictions via:
 
 ##  1. Dataset Source & Preprocessing
 
-- **Source:** CFPB Consumer Complaint Database (7GB+) via [data.gov.in](https://data.gov.in)
+- **Source:** CFPB Consumer Complaint Database (7GB+) via [An official website of the United States government](https://www.consumerfinance.gov/data-research/consumer-complaints)
 - **Sample:** 1% random sample (~34,454 complaints)
 - **Features:**
   - `Consumer complaint narrative` → `X`
@@ -197,7 +197,7 @@ The “classic” model’s accuracy was largely due to **memorized keywords**, 
 
 - **Ribeiro, M. et al. (2016).** [*"Why Should I Trust You?": Explaining the Predictions of Any Classifier (LIME Paper).*](https://arxiv.org/abs/1602.04938)
 
-- **CFPB (2023).** [*Consumer Complaint Database.*](https://data.gov.in/)
+- **CFPB Dataset.** [*Consumer Complaint Database.*](https://www.consumerfinance.gov/data-research/consumer-complaints/)
 
 - **Reimers, N., & Gurevych, I. (2019).** [*Sentence-Transformers Library.*](https://www.sbert.net/)
 
