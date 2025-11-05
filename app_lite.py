@@ -960,9 +960,9 @@ with tab2:
     This project is fully reproducible. All code, model weights, and data are available at the 
     project's GitHub repository.
 
-    - **[Code Repository 🔗](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME)**
-    - **[Dataset 🔗](https://data.gov.in/catalogs/consumer-complaint)** (or link to your Kaggle/lite version)
-    - **[Saved Models 🔗](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/tree/main/models)** *(Note: Models were saved using `joblib`, `tf.keras.models.save_model`, and 
+    - **[Code Repository 🔗](https://github.com/AmeenKhan12345/The-Model-Interrogator)**
+    - **[Dataset 🔗](https://www.consumerfinance.gov/data-research/consumer-complaints/)** 
+    - **[Saved Models 🔗](https://github.com/AmeenKhan12345/The-Model-Interrogator)** *(Note: Models were saved using `joblib`, `tf.keras.models.save_model`, and 
       `trainer.save_model()` and must be loaded using the correct library as shown in this app.)*
     """)
 
