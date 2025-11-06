@@ -418,7 +418,7 @@ def get_attack_transformation(attack_type, intensity=1.0):
     
     elif attack_type == "WordSwap (QWERTY)":
         # We'll use random_one=False and increase pct_words_to_swap to respect intensity
-        return WordSwapQWERTY(random_one=False, pct_words_to_swap=intensity * 0.2)
+        return WordSwapQWERTY(random_one=False)
     
     elif attack_type == "CharDelete (Typo)":
         # We'll use random_one=False and increase pct_words_to_swap
@@ -541,7 +541,10 @@ with tab1:
         # --- Step 1: Generate Attack ---
         with st.spinner(f"⚔️ Launching {attack_type} attack..."):
             transformation = get_attack_transformation(attack_type, attack_intensity)
-            augmenter = Augmenter(transformation=transformation)
+            augmenter = Augmenter(
+                transformation=transformation,
+                pct_words_to_swap = attack_intensity # Use slider value directly for percent
+            )
             
             try:
                 attacked_text = augmenter.augment(user_input)
