@@ -856,14 +856,14 @@ with tab2:
     try:
         cm_col1, cm_col2 = st.columns(2)
         with cm_col1:
-            st.image("cm_model_1.png", caption="Model 1: Naive Bayes")
-            st.image("cm_model_3.png", caption="Model 3: LogReg + W2V")
+            st.image("assets/cm_model_1.png", caption="Model 1: Naive Bayes")
+            st.image("assets/cm_model_3.png", caption="Model 3: LogReg + W2V")
             
         with cm_col2:
-            st.image("cm_model_2.png", caption="Model 2: LogReg + TF-IDF")
-            st.image("cm_model_4.png", caption="Model 4: LSTM")
+            st.image("assets/cm_model_2.png", caption="Model 2: LogReg + TF-IDF")
+            st.image("assets/cm_model_4.png", caption="Model 4: LSTM")
         
-        st.image("cm_model_5.png", caption="Model 5: DistilBERT (The Champion)")
+        st.image("assets/cm_model_5.png", caption="Model 5: DistilBERT (The Champion)")
         
         st.markdown("""
         **Analysis:** The "Classic Hero" (Model 2) had a high F1 score, but its matrix would show 
