@@ -71,11 +71,11 @@ semantic_model = load_sentence_transformer()
 
 @st.cache_resource
 def load_model_1():
-    return joblib.load('model_1_nb.pkl')
+    return joblib.load('models/model_1_nb.pkl')
 
 @st.cache_resource
 def load_model_2():
-    return joblib.load('model_2_lr.pkl')
+    return joblib.load('models/model_2_lr.pkl')
 
 #@st.cache_resource
 #def load_model_3():
@@ -83,14 +83,14 @@ def load_model_2():
   #  lr_model = joblib.load('model_3_lr.pkl')
    # return w2v_model, lr_model
 
-def vectorize_complaints(text, model):
-    tokens = clean_text(text).split()
-    word_vectors = [model.wv[word] for word in tokens if word in model.wv]
-    
-    if len(word_vectors) > 0:
-        return np.mean(word_vectors, axis=0).reshape(1, -1)
-    else:
-        return np.zeros((1, model.vector_size))
+#def vectorize_complaints(text, model):
+ #   tokens = clean_text(text).split()
+  #  word_vectors = [model.wv[word] for word in tokens if word in model.wv]
+   # 
+   # if len(word_vectors) > 0:
+    #    return np.mean(word_vectors, axis=0).reshape(1, -1)
+    #else:
+     #   return np.zeros((1, model.vector_size))
 
 #@st.cache_resource
 #def load_model_4():
@@ -376,6 +376,8 @@ def create_metric_cards_html(metrics):
     }
     </style>
     """
+    # LITE FIX: Dynamically find number of models
+    num_models = len(metrics['confidence_drops'])
     
     cards = f"""
     <div style='display: flex; justify-content: space-around; flex-wrap: wrap;'>
